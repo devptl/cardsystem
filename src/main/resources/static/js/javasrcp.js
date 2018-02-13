@@ -2,22 +2,18 @@ function showBank() {
 	var x = document.getElementById("formcontainer");
 	x.style.display = "none";
 
-	var y = document.getElementById("cardcontainer");
-	y.style.display = "none";
-
 }
 
 function autotab(current, to) {
 	if (current.getAttribute
 			&& current.value.length == current.getAttribute("maxlength")) {
-		to.focus();
+		    var f = document.getElementById(to);
+	        f.focus();
 	}
 }
 
-function showBankAndForm() {
 
-	var y = document.getElementById("cardcontainer");
-	y.style.display = "none";
+function showBankAndForm() {
 
 }
 

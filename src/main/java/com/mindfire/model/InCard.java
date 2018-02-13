@@ -23,13 +23,13 @@ public class InCard {
 		first_name = "";
 		middle_name = "";
 		last_name = "";
-		card_no1 = "none";
-		card_no2 = "none";
-		card_no3 = "none";
-		card_no4 = "none";
+		card_no1 = "";
+		card_no2 = "";
+		card_no3 = "";
+		card_no4 = "";
 		card_type_id = 0;
-		valid_through = "none";
-		valid_from = "none";
+		valid_through = "";
+		valid_from = "";
 		cvv_no = 0;
 	}
 
