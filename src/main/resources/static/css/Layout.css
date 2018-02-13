@@ -1,0 +1,292 @@
+body {
+	background: url("../images/image3.jpg");
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Verdana;
+}
+
+@font-face {
+	font-family: headerfont;
+	src: url('../fonts/Lobster_1.3.otf');
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* HEADER SECTION */
+header {
+	font-weight: bold;
+}
+
+#headername {
+	font-size: 100px;
+	font-family: headerfont;
+	text-shadow: 2px 2px 2px blue;
+	color: black;
+	font-weight: bold;
+}
+
+#bankselect {
+	width: 100%;
+}
+
+#bankheading {
+	font-size: 17px;
+	color: darkslateblue;
+	padding: 7px;
+	width: 50%;
+	float: left;
+	text-shadow: grey 1px 1px 2px;
+	background: lightgray;
+	border-radius: 6px;
+}
+
+#bankoption {
+	width: 22%;
+	padding: 7px;
+	margin-left: 1%;
+	float: left;
+	padding-left: 2%;
+	border-radius: 5px;
+	background: lightgrey;
+	text-shadow: grey 1px 1px 2px;
+	color: darkslateblue;
+}
+
+.banksubmitbutton {
+	width: 22%;
+	padding: 7px;
+	margin-left: 1%;
+	padding-left: 2%;
+	border-radius: 5px;
+	background: lightgrey;
+	text-shadow: grey 1px 1px 2px;
+	color: darkslateblue;
+}
+
+#welcometext {
+	width: 100%;
+	font-size: 13px;
+	position: absolute;
+}
+
+#heading {
+	font-size: 17px;
+	color: darkslateblue;
+	padding: 7px;
+	width: 95%;
+	text-shadow: grey 1px 1px 2px;
+	background: lightgray;
+	border-radius: 6px;
+}
+
+/* CARD CONTAINER SECTION */
+#cardcontainer {
+	float: left;
+	width: 44%;
+	height: 218px;
+	font-weight: bold;
+	font-variant-caps: small-caps;
+}
+
+#mainForm {
+	width: 98%;
+	margin-top: 2%;
+}
+
+#cardcontainer1 {
+	background-color: red;
+	background-repeat: no-repeat;
+	height: 218px;
+	width: 343px;
+	padding: 0px;
+	margin: 1px;
+	border-radius: 17px;
+}
+
+#bankname {
+	margin-top: 11px;
+	margin-left: 14px;
+	position: absolute;
+	font-size: 22px;
+}
+
+#cardnumber {
+	margin-top: 115px;
+	margin-left: 72px;
+	position: absolute;
+	font-size: 21px;
+}
+
+#validfrom1 {
+	margin-top: 155px;
+	margin-left: 25px;
+	position: absolute;
+}
+
+#validthrough1 {
+	margin-top: 155px;
+	margin-left: 125px;
+	position: absolute;
+}
+
+#name {
+	margin-top: 173px;
+	margin-left: 24px;
+	position: absolute;
+	font-size: 22px;
+}
+
+#cardoptiontype {
+	margin-top: 140px;
+	margin-left: 232px;
+	position: absolute;
+	font-size: 22px;
+}
+
+#cardoptionmaster {
+	margin-top: 140px;
+	margin-left: 232px;
+	position: absolute;
+	font-size: 22px;
+}
+
+#cardoptionrupay {
+	margin-top: 140px;
+	margin-left: 232px;
+	position: absolute;
+	font-size: 22px;
+}
+
+#cardcontainer2 {
+	background-color: red;
+	background-repeat: no-repeat;
+	height: 218px;
+	width: 343px;
+	float: left;
+	margin: 1px;
+	font-size: 16px;
+	font-style: italic;
+	border-radius: 17px;
+}
+
+#strip {
+	background-color: black;
+	margin-top: 34px;
+	height: 40px;
+	width: 343px;
+	position: absolute;
+}
+
+#backno {
+	position: absolute;
+	margin-top: 88px;
+	margin-left: 36px;
+}
+
+#cvvno1 {
+	position: absolute;
+	margin-top: 89px;
+	margin-left: 272px;
+}
+
+/* FORM SECTION */
+#formcontainer {
+	width: 42%;
+	float: left;
+	color: white;
+	font-size: 15px;
+}
+
+#cdno {
+	width: 101%;
+}
+
+#validfromlabel {
+	margin-left: 8%;
+}
+
+#cardoptions {
+	width: 20%;
+	height: 43px;
+	border-radius: 5px;
+	background: lightgrey;
+	color: darkmagenta;
+}
+
+#errormsg{
+	color: orange;
+    font-weight: bold;
+}
+
+.textlabel {
+	text-align: left;
+	font-size: 14px;
+	margin: 0px;
+	display: block;
+	width: 24%;
+	padding: 2px 5px;
+	float: left;
+}
+
+.textinput {
+	width: 30%;
+	height: 35px;
+	text-align: center;
+	border-radius: 5px;
+	padding: 3px;
+	border: 1px solid #888888;
+}
+
+.textinput1 {
+	width: 16%;
+	padding: 3px;
+	text-align: center;
+	border-radius: 5px;
+	height: 35px;
+	border: 1px solid #888888;
+}
+
+fieldset {
+	padding: 0px;
+	border: none;
+}
+
+fieldset>div {
+	border: 2px solid #888888;
+	padding-left: 2%;
+	word-spacing: 2px;
+	line-height: 24px;
+	border-radius: 5px;
+}
+
+.submitbutton {
+	font-size: 128%;
+	padding: 11px;
+	width: 47%;
+	border-radius: 12px;
+	background: lightgrey;
+	color: darkmagenta;
+	float: left;
+}
+
+.onreset {
+	font-size: 128%;
+	padding: 11px;
+	width: 47%;
+	margin-left: 6%;
+	float: left;
+	border-radius: 12px;
+	background: lightgrey;
+	color: darkmagenta;
+}
