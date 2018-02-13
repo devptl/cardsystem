@@ -7,6 +7,19 @@
     <script src="../js/javasrcp.js"></script>
 </head>
 <body th:onload="${display.getBody_display()}">
+
+	<!-- BANK SELECT SECTION -->
+    <section id="bankselect">
+        <div>
+            
+            <form id="bankform" name="bankformname" th:action="@{/banks}" method="post">
+                <p>
+                    <label id="bankheading"> Bank selection </label>
+                    <input type="submit" class="banksubmitbutton" value="Back to Bankpage"/>
+                </p>
+            </form>
+        </div>
+    </section>
     
     <!-- FORM SECTION -->
     <section id="welcometext">  
@@ -26,18 +39,18 @@
                                required="required" maxlength="10" 
                                th:field="*{first_name}"
                                autofocus="autofocus" pattern="[A-Za-z]+" title="Can't take space or special character"
-			      			   oninput="autotab(this, document.entryform.MiddleName)"
+			      			   oninput="autotab(this, 'MiddleNameInput')"
                                placeholder="First Name" class="textinput" />
                          
                             <input id="MiddleNameInput" name="MiddleName" type="text"
                                maxlength="10" pattern="[A-Za-z]+" title="Can't take space or special character"
-							   oninput="autotab(this, document.entryform.LastName)"
+							   oninput="autotab(this, 'lastNameInput')"
 							   th:field="*{middle_name}"
                                placeholder="Middle Name" class="textinput" />
                         
                             <input id="lastNameInput" name="LastName" type="text" required="required"
 			    			   pattern="[A-Za-z]+" title="Can't take space or special character"
-							   oninput="autotab(this, document.entryform.CardNumber1)"
+							    oninput="autotab(this, 'cardno1')"
 							   th:field="*{last_name}"
                                placeholder="Last Name" class="textinput"  maxlength="10" />
                         </p>
@@ -48,24 +61,25 @@
                             <span id="cdno">
 			       				<input id="cardno1" name="CardNumber1" type="number" class="textinput1"
                                     required="required" placeholder="4-digit" pattern="[0-9]{4}" 
-                               		oninput="autotab(this, document.entryform.CardNumber2)"
+                               		oninput="autotab(this,'cardno2')"
 			       					th:field="*{card_no1}"
 			       					title="4 digit numerial value" maxlength="4" />
 
                                 <input id="cardno2" name="CardNumber2" type="number" class="textinput1"
                                		required="required" placeholder="4-digit" pattern="[0-9]{4}"
-			       					oninput="autotab(this, document.entryform.CardNumber3)"
+			       					oninput="autotab(this,'cardno3')"
 			       					th:field="*{card_no2}"
 			       					title="4 digit numerial value" maxlength="4" />
 
 			        			<input id="cardno3" name="CardNumber3" type="number" class="textinput1"
                                		required="required" placeholder="4-digit" pattern="[0-9]{4}"
-			      					oninput="autotab(this, document.entryform.CardNumber4)"
+			      					oninput="autotab(this,'cardno4')"
 			       					th:field="*{card_no3}"
 			       					title="4 digit numerial value" maxlength="4" />
 
 			        			<input id="cardno4" name="CardNumber4" type="number" class="textinput1"
                                		required="required" placeholder="4-digit" pattern="[0-9]{4}"
+                               		oninput="autotab(this, 'validthrough')"
 			       					th:field="*{card_no4}"
 			       					title="4 digit numerial value" maxlength="4" />
 			    			</span>
