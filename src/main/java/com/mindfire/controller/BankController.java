@@ -16,13 +16,19 @@ import com.mindfire.service.CardService;
 
 @Controller
 public class BankController {
-	CardService service;
+	private CardService service;
 	
 	@Autowired
 	public BankController(CardService service) {
 		this.service = service;
 	}
 	
+	/**
+	 * This methord return list of the bank to the card page 
+	 * @param bankhascardtypeobj
+	 * @param model
+	 * @return {@link String}card.html
+	 */
 	@RequestMapping(value = "banks", method = RequestMethod.POST)
 	public String banks(@ModelAttribute("bankhascardtype") BankHasCardType bankhascardtypeobj, ModelMap model) {
 
@@ -32,6 +38,7 @@ public class BankController {
 		s1 = service.cardTypes();
 		DataController datacontrol = new DataController(service);
 		
+		//initialise the component for the first view in bank page
 		datacontrol.initalil("showBank()", model, s1, ctypeobj);
 		model.addAttribute("banks", bankobj);
 		return "card";

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+<title>State Bank of India</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+
+<link rel="stylesheet" th:href="@{/css/Layout.css}" type="text/css" />
+
+<script src="../js/javasrcp.js"></script>
+</head>
+<body th:onload="${display.getBody_display()}">
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Card System</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="nav justify-content-end">
+				<li class="nav-item"><form th:action="@{/banks}" method="post">
+							<input type="submit" value="Home" id="navbutton" />
+					</form></li>
+				<li class="nav-item"><form th:action="@{/showcardin}" method="post">
+							<input type="submit" value="Show Card" id="navbutton" />
+					</form></li>
+			</ul>
+
+		</div>
+	</nav>
+
+	<!-- FORM SECTION -->
+	<section id="welcometext">
+		<div id="formcontainer">
+			<header id="heading">LETS GET THE CARD</header>
+
+			<form id="mainForm" name="entryform" th:action="@{/showcarddetail}"
+				th:object="${card}" method="post">
+				<fieldset class="box">
+					<legend> Enter Your card no </legend>
+					<div>
+						<p>
+							<label id="cardlabel">Cardno*</label>
+						</p>
+						<p>
+							<span id="cdno"> <input id="cardno1" name="CardNumber1"
+								type="number" class="textinput1" required="required"
+								placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this,'cardno2')" th:field="*{card_no1}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno2" name="CardNumber2" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this, 'cardno3')" th:field="*{card_no2}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno3" name="CardNumber3" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this, 'cardno4')" th:field="*{card_no3}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno4" name="CardNumber4" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								th:field="*{card_no4}" oninput="autotab(this, 'cvvno')"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cvvno" name="CvvNumber" type="password" class="textinput1"
+								required="required" placeholder="CVV" pattern="[0-9]{3}"
+								inputmode="numeric" th:field="*{cvv_no}"
+								title="3 digit numerial value" maxlength="3" />
+							</span>
+						</p>
+						<p>
+							<label class="textlabel">(*)Required</label> <label id="errormsg"
+								th:text="${msg}"></label>
+						</p>
+					</div>
+				</fieldset>
+				<br /> <input type="submit" class="submitbutton" value="Submit" />
+				<input type="reset" class="onreset" value="Reset"
+					onclick="showForm()" />
+			</form>
+		</div>
+
+
+		<!-- CARD SECTION -->
+		<div id="cardcontainer">
+			<div id="cardcontainer1">
+				<span id="bankname"><img
+					th:src=" '../images/'+ ${bankobj.getBankImage()}" /></span> <span
+					id="cardnumber" th:text="${cardobj.getCardNo()}"></span> <span
+					id="validfrom1"
+					th:text="'From :'+${cardobj.getValidFrom().substring(2, 7)}"></span>
+				<span id="validthrough1"
+					th:text="'To :'+${cardobj.getValidThrough().substring(2, 7)}"></span>
+				<span id="name"
+					th:text="${customerobj.getFirstName()}
+            						+' '+${customerobj.getMiddleName()}
+            						+' '+${customerobj.getLastName()}"></span>
+				<span id="cardoptiontype"><img
+					th:src=" '../images/'+ ${cardtypeobj.getCardTypeImage()}" /></span>
+			</div>
+			<div id="cardcontainer2">
+				<div id="strip"></div>
+				<span id="backno">XXXX XXXX XXXX <span
+					th:text="${cardobj.getCardNo().substring(12, 15)}"></span></span> <span
+					id="cvvno1" th:text="${cardobj.getCvvNo()}"></span>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

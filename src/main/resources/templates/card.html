@@ -1,132 +1,186 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"   xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"></meta>
-    <title>State Bank of India</title>
-    <link rel="stylesheet" th:href="@{/css/Layout.css}" type="text/css"/>
-    <script src="../js/javasrcp.js"></script>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+<title>State Bank of India</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+
+<link rel="stylesheet" th:href="@{/css/Layout.css}" type="text/css" />
+
+<script src="../js/javasrcp.js"></script>
 </head>
 <body th:onload="${display.getBody_display()}">
-    
-    <!-- BANK SELECT SECTION -->
-    <section id="bankselect">
-        <div>
-            
-            <form id="bankform" name="bankformname" th:action="@{/cardtypes}" th:object="${bankhascardtype}"  method="post">
-                <p>
-                    <label id="bankheading"> Bank selection </label>
-                    <select id="bankoption"  name="bankOption"  th:field="*{bankBankId}">
-                        <option th:each="bank :${banksobj.toArray()}" th:value="${bank.getBankId()}" th:text="${bank.getBankName()}"></option>
-                    </select> 
-                    <input type="submit" class="banksubmitbutton" value="Submit"/>
-                </p>
-            </form>
-        </div>
-    </section>
-    
-    <!-- FORM SECTION -->
-    <section id="welcometext">  
-        <div id="formcontainer">
-	    <header id="heading">APPLY FOR THE CARD</header>
 
-            <form id="mainForm" name="entryform" th:action="@{/entry}" th:object="${card}" method="post">
-                <fieldset class="box">
-                    <legend>Enter Your Details for 
-                    <select  th:field="*{bank_id}">
-                    <option th:value="${banks.getBankId()}" th:text="${banks.getBankName()}" />
-                    </select>
-                    </legend>
-                    <div>
-                        <p>
-                            <input id="firstNameInput" name="FirstName" type="text"
-                               required="required" maxlength="10" 
-                               th:field="*{first_name}"
-                               autofocus="autofocus" pattern="[A-Za-z]+" title="Can't take space or special character"
-			      			   oninput="autotab(this, 'MiddleNameInput')"
-                               placeholder="First Name" class="textinput" />
-                         
-                            <input id="MiddleNameInput" name="MiddleName" type="text"
-                               maxlength="10" pattern="[A-Za-z]+" title="Can't take space or special character"
-							   oninput="autotab(this, 'lastNameInput')"
-							   th:field="*{middle_name}"
-                               placeholder="Middle Name" class="textinput" />
-                        
-                            <input id="lastNameInput" name="LastName" type="text" required="required"
-			    			   pattern="[A-Za-z]+" title="Can't take space or special character"
-							   oninput="autotab(this, 'cardno1')"
-							   th:field="*{last_name}"
-                               placeholder="Last Name" class="textinput"  maxlength="10" />
-                        </p>
-                        <p>
-                            <label id="cardlabel" >Cardno*</label>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Card System</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="nav justify-content-end">
+				<li class="nav-item"><form th:action="@{/banks}" method="post">
+						<input type="submit" value="Home" id="navbutton" />
+					</form></li>
+				<li class="nav-item"><form th:action="@{/showcardin}" method="post">
+						<input type="submit" value="Show Card" id="navbutton" />
+					</form></li>
+			</ul>
+
+		</div>
+	</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- BANK SELECT SECTION -->
+	<section id="bankselect">
+		<div>
+
+			<form id="bankform" name="bankformname" th:action="@{/cardtypes}"
+				th:object="${bankhascardtype}" method="post">
+				<p>
+					<label id="bankheading"> Bank selection </label> <select
+						id="bankoption" name="bankOption" th:field="*{bankBankId}">
+						<option th:each="bank :${banksobj.toArray()}"
+							th:value="${bank.getBankId()}" th:text="${bank.getBankName()}"></option>
+					</select> <input type="submit" class="banksubmitbutton" value="Submit" />
+				</p>
+			</form>
+		</div>
+	</section>
+
+	<!-- FORM SECTION -->
+	<section id="welcometext">
+		<div id="formcontainer">
+			<header id="heading">APPLY FOR THE CARD</header>
+
+			<form id="mainForm" name="entryform" th:action="@{/entry}"
+				th:object="${card}" method="post">
+				<fieldset class="box">
+					<legend>
+						Enter Your Details for <select id="banknameoption"
+							th:field="*{bank_id}">
+							<option th:value="${banks.getBankId()}"
+								th:text="${banks.getBankName()}" />
+						</select>
+					</legend>
+					<div>
+						<p>
+							<input id="firstNameInput" name="FirstName" type="text"
+								required="required" maxlength="10" th:field="*{first_name}"
+								autofocus="autofocus" pattern="[A-Za-z]+"
+								title="Can't take space or special character"
+								oninput="autotab(this, 'MiddleNameInput')"
+								placeholder="First Name" class="textinput" /> <input
+								id="MiddleNameInput" name="MiddleName" type="text"
+								maxlength="10" pattern="[A-Za-z]+"
+								title="Can't take space or special character"
+								oninput="autotab(this, 'lastNameInput')"
+								th:field="*{middle_name}" placeholder="Middle Name"
+								class="textinput" /> <input id="lastNameInput" name="LastName"
+								type="text" required="required" pattern="[A-Za-z]+"
+								title="Can't take space or special character"
+								oninput="autotab(this, 'cardno1')" th:field="*{last_name}"
+								placeholder="Last Name" class="textinput" maxlength="10" />
 						</p>
 						<p>
-                            <span id="cdno">
-			       				<input id="cardno1" name="CardNumber1" type="number" class="textinput1"
-                                    required="required" placeholder="4-digit" pattern="[0-9]{4}" 
-                               		oninput="autotab(this,'cardno2')"
-			       					th:field="*{card_no1}"
-			       					title="4 digit numerial value" maxlength="4" />
+							<label id="cardlabel">Cardno*</label>
+						</p>
+						<p>
+							<span id="cdno"> <input id="cardno1" name="CardNumber1"
+								type="number" class="textinput1" required="required"
+								placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this,'cardno2')" th:field="*{card_no1}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno2" name="CardNumber2" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this, 'cardno3')" th:field="*{card_no2}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno3" name="CardNumber3" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								oninput="autotab(this, 'cardno4')" th:field="*{card_no3}"
+								title="4 digit numerial value" maxlength="4" /> <input
+								id="cardno4" name="CardNumber4" type="number" class="textinput1"
+								required="required" placeholder="4-digit" pattern="[0-9]{4}"
+								th:field="*{card_no4}" oninput="autotab(this, 'validthrough')"
+								title="4 digit numerial value" maxlength="4" />
+							</span> <select id="cardoptions" name="cardOption"
+								th:field="*{card_type_id}">
+								<option th:each="cardtype :${cardtypesobj.toArray()}"
+									th:value="${cardtype.getCardTypeId()}"
+									th:text="${cardtype.getCardTypeName()}">VISA</option>
 
-                                <input id="cardno2" name="CardNumber2" type="number" class="textinput1"
-                               		required="required" placeholder="4-digit" pattern="[0-9]{4}"
-			       					oninput="autotab(this, 'cardno3')"
-			       					th:field="*{card_no2}"
-			       					title="4 digit numerial value" maxlength="4" />
+							</select>
+						</p>
 
-			        			<input id="cardno3" name="CardNumber3" type="number" class="textinput1"
-                               		required="required" placeholder="4-digit" pattern="[0-9]{4}"
-			      					oninput="autotab(this, 'cardno4')"
-			       					th:field="*{card_no3}"
-			       					title="4 digit numerial value" maxlength="4" />
+						<p>
+							<label id="validthroughlabel">Validity Through*</label> <label
+								id="validfromlabel">Validity From*</label>
+						</p>
+						<p>
+							<input id="validthrough" name="validThrough" class="textinput"
+								title="date should be after the current date" min="2018-01-20"
+								max="2038-04-30" th:field="*{valid_through}" type="date" /> <input
+								id="validfrom" name="validFrom" class="textinput"
+								title="date should be after the current date" min="2018-01-20"
+								max="2038-04-30" th:field="*{valid_from}" type="date" /> <input
+								id="cvvno" name="CvvNumber" type="password" class="textinput"
+								required="required" placeholder="CVV" pattern="[0-9]{3}"
+								inputmode="numeric" th:field="*{cvv_no}"
+								title="3 digit numerial value" maxlength="3" />
+						</p>
+						<p>
+							<label class="textlabel">(*)Required</label>
 
-			        			<input id="cardno4" name="CardNumber4" type="number" class="textinput1"
-                               		required="required" placeholder="4-digit" pattern="[0-9]{4}"
-			       					th:field="*{card_no4}"
-			       					oninput="autotab(this, 'validthrough')"
-			       					title="4 digit numerial value" maxlength="4" />
-			    			</span>
-                       
-                            <select id="cardoptions" name="cardOption" th:field="*{card_type_id}">
- 								<option th:each="cardtype :${cardtypesobj.toArray()}" th:value="${cardtype.getCardTypeId()}" th:text="${cardtype.getCardTypeName()}">VISA</option>
- 			        		
-			    			</select>
-                        	</p>
-							
-							<p>
-                            <label id="validthroughlabel" >Validity Through*</label>
-                            <label id="validfromlabel" >Validity From*</label>
-							</p>
-							<p>
- 			    			<input id="validthrough" name="validThrough" class="textinput"
-			       					title="date should be after the current date" min="2018-01-20" max="2038-04-30"
-                               		th:field="*{valid_through}"
-                               		type="date" />
-                        
-                            <input id="validfrom" name="validFrom" class="textinput"
-			       					title="date should be after the current date" min="2018-01-20" max="2038-04-30"
-                               		th:field="*{valid_from}"
-                               		type="date" />
-                         
-                            <input id="cvvno" name="CvvNumber" type="password" class="textinput"
-                               		required="required" placeholder="CVV" pattern="[0-9]{3}" inputmode="numeric" 
-			       					th:field="*{cvv_no}"
-			       					title="3 digit numerial value" maxlength="3" />
-                        	</p>
-	               			 <p>
-                           			 <label class="textlabel" >(*)Required</label>
-                           			
-                       		 </p>   
-                    	</div>
-                	</fieldset>
-                	<br/>
-                		<input type="submit" class="submitbutton" value="Submit"/>
-						<input type="reset" class="onreset" value="Reset"  onclick="notdisplay()"/>
-            	</form>  
-        	</div>
-    
-    </section>
+						</p>
+					</div>
+				</fieldset>
+				<br /> <input type="submit" class="submitbutton" value="Submit" />
+				<input type="reset" class="onreset" value="Reset"
+					onclick="showCardAndForm()" />
+			</form>
+		</div>
 
-    
+	</section>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+
 </body>
 </html>

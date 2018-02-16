@@ -21,7 +21,7 @@ import com.mindfire.service.CardService;
 @Controller
 public class CardTypeController {
 	
-	CardService service;
+	private CardService service;
 	
 	@Autowired
 	public CardTypeController(CardService service) {
@@ -61,6 +61,7 @@ public class CardTypeController {
 		s1 = (ArrayList<CardType>) query.getResultList();
 		DataController datacontrol = new DataController(service);
 
+		//setting the values to show cardtypes and form for a particular bank
 		datacontrol.initalil("showBankAndForm()", model, s1, ctypeobj);
 		model.addAttribute("banks", bankobj);
 		return "card";
