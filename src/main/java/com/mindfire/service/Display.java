@@ -1,3 +1,6 @@
+/**
+ * to set the display of the application at various point 
+ */
 package com.mindfire.service;
 
 public class Display {

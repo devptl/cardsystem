@@ -35,4 +35,17 @@ public class CardType {
 		this.cardTypeImage = cardTypeImage;
 	}
 
+	
+	public CardType() {
+	
+	}
+
+	public CardType(int cardTypeId, String cardTypeName, String cardTypeImage) {
+		this.cardTypeId = cardTypeId;
+		this.cardTypeName = cardTypeName;
+		this.cardTypeImage = cardTypeImage;
+	}
+	
+	
+
 }

@@ -6,6 +6,7 @@ body {
 	font-family: Verdana;
 }
 
+
 @font-face {
 	font-family: headerfont;
 	src: url('../fonts/Lobster_1.3.otf');
@@ -38,6 +39,7 @@ header {
 
 #bankselect {
 	width: 100%;
+	margin-top: 10px;
 }
 
 #bankheading {
@@ -51,16 +53,28 @@ header {
 	border-radius: 6px;
 }
 
+legend {
+	font-size: 17px;
+}
+
 #bankoption {
 	width: 22%;
 	padding: 7px;
 	margin-left: 1%;
 	float: left;
+	height: 40px;
 	padding-left: 2%;
 	border-radius: 5px;
 	background: lightgrey;
 	text-shadow: grey 1px 1px 2px;
 	color: darkslateblue;
+}
+
+#banknameoption {
+	height: 20px;
+	background: transparent;
+    color: white;
+    border: none;
 }
 
 .banksubmitbutton {
@@ -85,9 +99,16 @@ header {
 	color: darkslateblue;
 	padding: 7px;
 	width: 95%;
+	margin-top:8px;
 	text-shadow: grey 1px 1px 2px;
 	background: lightgray;
 	border-radius: 6px;
+}
+
+#navbutton{
+	background: transparent;
+    border: none;
+    color: white;
 }
 
 /* CARD CONTAINER SECTION */
@@ -218,15 +239,15 @@ header {
 
 #cardoptions {
 	width: 20%;
-	height: 43px;
+	height: 36px;
 	border-radius: 5px;
 	background: lightgrey;
 	color: darkmagenta;
 }
 
-#errormsg{
+#errormsg {
 	color: orange;
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .textlabel {
@@ -265,8 +286,9 @@ fieldset {
 fieldset>div {
 	border: 2px solid #888888;
 	padding-left: 2%;
-	word-spacing: 2px;
-	line-height: 24px;
+	padding-top: 2%;
+	word-spacing: 6px;
+	line-height: 13px;
 	border-radius: 5px;
 }
 
@@ -275,8 +297,8 @@ fieldset>div {
 	padding: 11px;
 	width: 47%;
 	border-radius: 12px;
-	background: lightgrey;
-	color: darkmagenta;
+    background: transparent;
+    color: white;
 	float: left;
 }
 
@@ -287,6 +309,6 @@ fieldset>div {
 	margin-left: 6%;
 	float: left;
 	border-radius: 12px;
-	background: lightgrey;
-	color: darkmagenta;
+    background: transparent;
+    color: white;
 }

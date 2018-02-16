@@ -65,6 +65,10 @@ public class Card {
 	
 
 	public Card() {
+		validFrom="1234567890";
+		validThrough="1234567890";
+		cardNo="1234567812345678";
+		
 		
 	}
 
